@@ -27,7 +27,7 @@ const CosmicProjectForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setProcessing(true);
-    const response=await fetch ('http://localhost:5000/api/auth/sendmessage',{
+    const response=await fetch ('https://portbackend-ipyo.onrender.com/api/auth/sendmessage',{
       method:'POST',
       headers:{
         "Content-Type":"application/json"
