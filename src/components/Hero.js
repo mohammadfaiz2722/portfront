@@ -70,21 +70,19 @@ const Hero = () => {
 
   return (
     <div className="relative" id='hero'>
-       {[...Array(200)].map((_, i) => (
+         {[...Array(200)].map((_, i) => (
         <div
           key={i}
           className="particle absolute rounded-full"
           style={{
-            left: `${Math.random() * 96}%`,
-            top: `${Math.random() * 90}%`,
+            left: `${Math.random() * 100}%`,
+            top: `${Math.random() * 100}%`,
             width: `${Math.random() * 3 + 1}px`,
             height: `${Math.random() * 3 + 1}px`,
-
-            
+            backgroundColor: `hsl(${Math.random() * 360}, 50%, 50%)`,
             animation: `float ${Math.random() * 10 + 5}s linear infinite, pulse ${Math.random() * 2 + 1}s ease-in-out infinite alternate`
           }}
-          
-        ><FaStar color={`hsl(${Math.random() * 360}, 50%, 50%)`}fontSize="12px"/></div>
+        />
       ))}
       <AnimatePresence>
         {showSplash && <SplashScreen onEnd={() => setShowSplash(false)} />}
