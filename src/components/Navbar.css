@@ -95,6 +95,10 @@
 {
   #faizCreation{
 
-    font-size: 1.9rem;
+    font-size: 1.3rem;
+    margin-left: -10px;
+  }
+  .hamburger{
+    margin-top: 15px;
   }
 }  
