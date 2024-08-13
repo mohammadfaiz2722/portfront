@@ -90,8 +90,8 @@ const Hero = () => {
     
         {/* Main Content */}
         <div className="container mx-auto px-6 text-center">
-          <h1 className="text-4xl md:text-6xl font-bold mb-4" style={{fontFamily:'"Style Script", cursive'}}>Welcome to My Portfolio</h1>
-          <p className="text-lg md:text-2xl mb-8">
+          <h1 className="text-4xl md:text-6xl font-bold mb-4 " id='type2' style={{fontFamily:'"Style Script", cursive'}}>Welcome to My Portfolio</h1>
+          <p className="text-lg md:text-2xl mb-8" id="type">
             I am a <span className="text-blue-500">
               <Typewriter
                 words={['Web Developer', 'Gamer', 'Student','Coder']}

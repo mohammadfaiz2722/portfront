@@ -125,6 +125,12 @@
   
   @media  (max-width:600px) {
     #hero{
+      /* background-color: red !important; */
+      /* border: 2px solid red !important; */
       height: 70vh;
+    }
+    #type2{
+      /* color: ; */
+      margin-top:-40%;
     }
   }

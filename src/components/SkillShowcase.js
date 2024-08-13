@@ -2,36 +2,31 @@ import React, { useEffect } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
-const workProcess = [
+const services = [
   {
-    step: 1,
-    title: 'Discovery',
-    description: 'Understanding your needs and project requirements in depth.',
-    icon: '🔍', // You can replace this with an actual icon component or image
-  },
-  {
-    step: 2,
-    title: 'Planning',
-    description: 'Crafting a detailed roadmap and timeline for your project.',
-    icon: '📝',
-  },
-  {
-    step: 3,
-    title: 'Development',
-    description: 'Bringing your vision to life with clean, efficient code.',
+    title: 'Web Development',
+    description: 'Building responsive and modern web applications with MERN stack and Next.js.',
     icon: '💻',
   },
   {
-    step: 4,
-    title: 'Testing',
-    description: 'Rigorous quality assurance to ensure a flawless product.',
-    icon: '🧪',
+    title: 'UI/UX Design',
+    description: 'Creating user-friendly and visually appealing designs for your projects.',
+    icon: '🎨',
   },
   {
-    step: 5,
-    title: 'Delivery',
-    description: 'Launching your project and providing ongoing support.',
+    title: 'SEO Optimization',
+    description: 'Optimizing your website to rank higher on search engines and drive more traffic.',
     icon: '🚀',
+  },
+  {
+    title: 'Content Creation',
+    description: 'Crafting engaging content that resonates with your audience.',
+    icon: '✍️',
+  },
+  {
+    title: 'E-commerce Solutions',
+    description: 'Developing customized e-commerce platforms to boost your online sales.',
+    icon: '🛒',
   },
 ];
 
@@ -40,7 +35,7 @@ const fadeInVariants = {
   visible: { opacity: 1, y: 0 },
 };
 
-const WorkProcessSection = () => {
+const ServicesSection = () => {
   const controls = useAnimation();
   const [ref, inView] = useInView({
     triggerOnce: true,
@@ -66,7 +61,7 @@ const WorkProcessSection = () => {
             width: `${Math.random() * 3 + 1}px`,
             height: `${Math.random() * 3 + 1}px`,
             backgroundColor: `hsl(${Math.random() * 360}, 50%, 50%)`,
-            animation: `float ${Math.random() * 10 + 5}s linear infinite, pulse ${Math.random() * 2 + 1}s ease-in-out infinite alternate`
+            animation: `float ${Math.random() * 10 + 5}s linear infinite, pulse ${Math.random() * 2 + 1}s ease-in-out infinite alternate`,
           }}
         />
       ))}
@@ -80,22 +75,21 @@ const WorkProcessSection = () => {
           transition={{ duration: 1 }}
           className="text-4xl font-bold mb-12 text-white"
         >
-          <span style={{ fontFamily: '"Style Script", cursive', fontSize:'60px'}}>My Work Process</span>
+          <span style={{ fontFamily: '"Style Script", cursive', fontSize: '60px' }}>My Services</span>
         </motion.h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
-          {workProcess.map((step, index) => (
+          {services.map((service, index) => (
             <motion.div
-              key={step.title}
+              key={service.title}
               initial="hidden"
               animate={controls}
               variants={fadeInVariants}
               transition={{ duration: 1, delay: index * 0.2 }}
               className="p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 bg-gray-800"
             >
-              <div className="text-4xl mb-4">{step.icon}</div>
-              <h3 className="text-xl font-bold text-gray-200 mb-2">{step.title}</h3>
-              <p className="text-sm text-gray-400">Step {step.step}</p>
-              <p className="text-gray-300 mt-4">{step.description}</p>
+              <div className="text-4xl mb-4">{service.icon}</div>
+              <h3 className="text-xl font-bold text-gray-200 mb-2">{service.title}</h3>
+              <p className="text-gray-300 mt-4">{service.description}</p>
             </motion.div>
           ))}
         </div>
@@ -104,4 +98,4 @@ const WorkProcessSection = () => {
   );
 };
 
-export default WorkProcessSection;
+export default ServicesSection;
