@@ -1,6 +1,6 @@
 // 'use client';
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { FaReact, FaNodeJs, FaDatabase, FaHtml5, FaCss3Alt, FaJs } from 'react-icons/fa';
@@ -46,7 +46,22 @@ const SkillsSection = () => {
       controls.start('visible');
     }
   }, [controls, inView]);
+  const [particleCount, setParticleCount] = useState(80);
 
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 768) { // Change 768 to your breakpoint for small screens
+        setParticleCount(20);
+      } else {
+        setParticleCount(80);
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    handleResize(); // Set initial value
+
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
   return (
     <section className="bg-black py-20 relative" id='skills'>
       <div className="container mx-auto px-6 md:px-12 text-center">
@@ -86,7 +101,7 @@ const SkillsSection = () => {
           ))}
         </div>
       </div>
-      {[...Array(80)].map((_, i) => (
+      {[...Array(particleCount)].map((_, i) => (
         <div
           key={i}
           className="particle absolute rounded-full"

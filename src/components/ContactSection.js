@@ -1,6 +1,5 @@
-'use client';
+import React,{useEffect, useState} from 'react';
 
-import React from 'react';
 import { FaLinkedin, FaInstagram, FaGithub, FaEnvelope } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
@@ -14,23 +13,25 @@ const fadeInVariants = {
 // console.log(process.env.PORT_LIVE);
 
 const ContactSection = () => {
+  const [particleCount, setParticleCount] = useState(80);
 
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 768) { // Change 768 to your breakpoint for small screens
+        setParticleCount(40);
+      } else {
+        setParticleCount(80);
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    handleResize(); // Set initial value
+
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
   return (
     <section className="relative  py-20 text-white"  style={{backgroundColor:'black'}}>
-       {[...Array(80)].map((_, i) => (
-        <div
-          key={i}
-          className="particle absolute rounded-full"
-          style={{
-            left: `${Math.random() * 100}%`,
-            top: `${Math.random() * 100}%`,
-            width: `${Math.random() * 3 + 1}px`,
-            height: `${Math.random() * 3 + 1}px`,
-            backgroundColor: `hsl(${Math.random() * 360}, 50%, 50%)`,
-            animation: `float ${Math.random() * 10 + 5}s linear infinite, pulse ${Math.random() * 2 + 1}s ease-in-out infinite alternate`
-          }}
-        />
-      ))}
+      
       <div className="relative container mx-auto px-6 text-center">
         <motion.h2
           initial="hidden"
@@ -110,6 +111,20 @@ const ContactSection = () => {
          </Link>
         </motion.div>
       </div>
+      {[...Array(particleCount)].map((_, i) => (
+        <div
+          key={i}
+          className="particle absolute rounded-full"
+          style={{
+            left: `${Math.random() * 100}%`,
+            top: `${Math.random() * 100}%`,
+            width: `${Math.random() * 3 + 1}px`,
+            height: `${Math.random() * 3 + 1}px`,
+            backgroundColor: `hsl(${Math.random() * 360}, 50%, 50%)`,
+            animation: `float ${Math.random() * 10 + 5}s linear infinite, pulse ${Math.random() * 2 + 1}s ease-in-out infinite alternate`
+          }}
+        />
+      ))}
     </section>
   );
 };

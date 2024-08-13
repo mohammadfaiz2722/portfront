@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link, useNavigate } from 'react-router-dom';
 
@@ -48,24 +48,26 @@ navigate("/")
     // setTimeout(() => {
     // }, 2000);
   };
+  const [particleCount, setParticleCount] = useState(80);
 
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 768) { // Change 768 to your breakpoint for small screens
+        setParticleCount(20);
+      } else {
+        setParticleCount(80);
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    handleResize(); // Set initial value
+
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+  
   return (
     <div className="min-h-screen bg-black overflow-hidden relative flex items-center justify-center px-4 py-12">
       {/* Starry background */}
-      {[...Array(80)].map((_, i) => (
-        <div
-          key={i}
-          className="star absolute rounded-full bg-white"
-          style={{
-            left: `${Math.random() * 100}%`,
-            top: `${Math.random() * 100}%`,
-            width: `${Math.random() * 3 + 1}px`,
-            height: `${Math.random() * 3 + 1}px`,
-            backgroundColor: `hsl(${Math.random() * 360}, 50%, 50%)`,
-            animation: `twinkle ${Math.random() * 5 + 3}s linear infinite`,
-          }}
-        />
-      ))}
 
       {/* Floating planets */}
       <div className="planet absolute w-20 h-20 rounded-full bg-purple-500 opacity-50" style={{ top: '10%', left: '5%', animation: 'float 15s infinite ease-in-out' }} />
@@ -100,7 +102,7 @@ navigate("/")
               { value: 'Fullstack', label: 'Fullstack Galaxy' },
               { value: 'Other', label: 'Alien Technology' },
             ]}
-          />
+            />
 
           <Input label="Reference Star System (URL)" name="referenceWebsite" type="url" value={formData.referenceWebsite} onChange={handleChange} />
 
@@ -142,20 +144,20 @@ navigate("/")
             type="submit"
             className={`w-full ${
               processing
-                ? 'bg-gray-600 cursor-not-allowed'
-                : 'bg-gradient-to-r from-purple-500 to-indigo-600 hover:from-purple-600 hover:to-indigo-700'
-            } text-white font-bold py-3 px-6 rounded-full transition-colors duration-300 shadow-lg`}
-            disabled={processing}
-          >
+              ? 'bg-gray-600 cursor-not-allowed'
+              : 'bg-gradient-to-r from-purple-500 to-indigo-600 hover:from-purple-600 hover:to-indigo-700'
+              } text-white font-bold py-3 px-6 rounded-full transition-colors duration-300 shadow-lg`}
+              disabled={processing}
+              >
             {processing ? 'Launching...' : 'Initiate Space Mission 🌠'}
           </motion.button>
         </form>
 
         {success && (
           <motion.div
-            initial={{ opacity: 0, scale: 0.5 }}
-            animate={{ opacity: 1, scale: 1 }}
-            className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-90"
+          initial={{ opacity: 0, scale: 0.5 }}
+          animate={{ opacity: 1, scale: 1 }}
+          className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-90"
           >
             <div className="text-center text-white">
               <h2 className="text-4xl font-bold mb-4">Mission Launched! 🎉</h2>
@@ -164,6 +166,20 @@ navigate("/")
           </motion.div>
         )}
       </motion.div>
+      {[...Array(particleCount)].map((_, i) => (
+        <div
+          key={i}
+          className="star absolute rounded-full bg-white"
+          style={{
+            left: `${Math.random() * 100}%`,
+            top: `${Math.random() * 100}%`,
+            width: `${Math.random() * 3 + 1}px`,
+            height: `${Math.random() * 3 + 1}px`,
+            backgroundColor: `hsl(${Math.random() * 360}, 50%, 50%)`,
+            animation: `twinkle ${Math.random() * 5 + 3}s linear infinite`,
+          }}
+        />
+      ))}
     </div>
   );
 };

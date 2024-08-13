@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect,useState } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
@@ -35,6 +35,22 @@ const PhotoSection = () => {
     }
   }, [controls, inView]);
 
+  const [particleCount, setParticleCount] = useState(80);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 768) { // Change 768 to your breakpoint for small screens
+        setParticleCount(40);
+      } else {
+        setParticleCount(80);
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    handleResize(); // Set initial value
+
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
   return (
     <section className="bg-black py-20 relative overflow-hidden" id="about">
       <div className="container mx-auto px-6 md:px-12 flex flex-col md:flex-row items-center relative z-10">
@@ -93,13 +109,13 @@ const PhotoSection = () => {
           </motion.h3>
         </motion.div>
       </div>
-      {[...Array(80)].map((_, i) => (
+      {[...Array(particleCount)].map((_, i) => (
         <div
           key={i}
           className="particle absolute rounded-full"
           style={{
-            left: `${Math.random() * 100}%`,
-            top: `${Math.random() * 100}%`,
+            left: `${Math.random() * 80}%`,
+            top: `${Math.random() * 80}%`,
             width: `${Math.random() * 3 + 1}px`,
             height: `${Math.random() * 3 + 1}px`,
             backgroundColor: `hsl(${Math.random() * 360}, 50%, 50%)`,
