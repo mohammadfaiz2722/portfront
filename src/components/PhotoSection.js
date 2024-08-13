@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-// import Image from 'next/image';
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
@@ -10,16 +9,17 @@ const fadeInVariants = {
   visible: { opacity: 1, y: 0 },
 };
 
-const buttonVariants = {
-  hover: { 
-    scale: 1.1,
-    boxShadow: '0px 8px 15px rgba(0, 0, 0, 0.3)',
+const textGradientVariants = {
+  initial: { backgroundPosition: '0% 50%' },
+  animate: {
+    backgroundPosition: '100% 50%',
     transition: {
-      duration: 0.3,
-      yoyo: 5 // Repeat the animation 5 times
-    }
+      duration: 3,
+      ease: 'easeInOut',
+      repeat: Infinity,
+      repeatType: 'reverse',
+    },
   },
-  tap: { scale: 0.95 }
 };
 
 const PhotoSection = () => {
@@ -36,7 +36,7 @@ const PhotoSection = () => {
   }, [controls, inView]);
 
   return (
-    <section className="bg-black py-20 relative overflow-hidden" id='about'>
+    <section className="bg-black py-20 relative overflow-hidden" id="about">
       <div className="container mx-auto px-6 md:px-12 flex flex-col md:flex-row items-center relative z-10">
         <motion.div
           ref={ref}
@@ -63,24 +63,37 @@ const PhotoSection = () => {
           transition={{ duration: 1, delay: 0.5 }}
           className="w-full md:w-1/2 text-center md:text-left px-6"
         >
-          <h2 className="text-3xl md:text-5xl font-bold mb-4 text-gray-800" style={{fontFamily:'"Style Script", cursive',fontSize:'60px',color:'white'}}>
+          <h2
+            className="text-3xl md:text-5xl font-bold mb-4 text-gray-800"
+            style={{
+              fontFamily: '"Style Script", cursive',
+              fontSize: '60px',
+              color: 'white',
+            }}
+          >
             About Me
           </h2>
-          <p className="text-lg md:text-xl text-gray-600 mb-6">
-            I am a passionate Full Stack Developer with expertise in the MERN stack and Next.js. I enjoy creating dynamic and responsive web applications that provide great user experiences.
+          <p className="text-lg md:text-xl text-gray-300 mb-6">
+            I am a passionate Full Stack Developer with expertise in the MERN
+            stack and Next.js. I enjoy creating dynamic and responsive web
+            applications that provide great user experiences.
           </p>
-          <motion.a
-            to="/about"
-            className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-full transition duration-300"
-            variants={buttonVariants}
-            whileHover="hover"
-            whileTap="tap"
+          <motion.h3
+            className="text-xl font-bold bg-clip-text text-transparent"
+            style={{
+              backgroundImage:
+                'linear-gradient(90deg, #ff8a00, #e52e71, #9a00ff)',
+              backgroundSize: '200%',
+            }}
+            variants={textGradientVariants}
+            initial="initial"
+            animate="animate"
           >
-            Learn More
-          </motion.a>
+            Scroll to Explore
+          </motion.h3>
         </motion.div>
       </div>
-      {[...Array(200)].map((_, i) => (
+      {[...Array(80)].map((_, i) => (
         <div
           key={i}
           className="particle absolute rounded-full"
@@ -90,7 +103,7 @@ const PhotoSection = () => {
             width: `${Math.random() * 3 + 1}px`,
             height: `${Math.random() * 3 + 1}px`,
             backgroundColor: `hsl(${Math.random() * 360}, 50%, 50%)`,
-            animation: `float ${Math.random() * 10 + 5}s linear infinite, pulse ${Math.random() * 2 + 1}s ease-in-out infinite alternate`
+            animation: `float ${Math.random() * 10 + 5}s linear infinite, pulse ${Math.random() * 2 + 1}s ease-in-out infinite alternate`,
           }}
         />
       ))}

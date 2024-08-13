@@ -15,7 +15,7 @@ const projects = [
     style:{objectFit:'cover'},
   },
   {
-    name: 'Portfolio',
+    name: 'Real Estate Portfolio',
     description: 'A portfolio for a Real-Estate Company',
     technologies: ['HTML', 'CSS', 'JavaScript'],
     liveLink: 'https://grandblue.omrox.in/#home',
@@ -85,7 +85,7 @@ const ProjectsShowcase = () => {
 
   return (
     <section className="bg-black py-20 relative"  id='projects'>
-      {[...Array(200)].map((_, i) => (
+      {[...Array(80)].map((_, i) => (
         <div
           key={i}
           className="particle absolute rounded-full"

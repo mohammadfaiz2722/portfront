@@ -123,3 +123,8 @@
     to { opacity: 0.5; }
   }
   
+  @media  (max-width:600px) {
+    #hero{
+      height: 70vh;
+    }
+  }

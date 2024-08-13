@@ -6,7 +6,6 @@ import { useInView } from 'react-intersection-observer';
 import { FaReact, FaNodeJs, FaDatabase, FaHtml5, FaCss3Alt, FaJs } from 'react-icons/fa';
 import { SiNextdotjs } from 'react-icons/si';
 import './SkillSection.css'; // Assuming you have a CSS file for the animation styles
-import { Link } from 'react-router-dom';
 
 const skills = [
   { name: 'React', icon: FaReact },
@@ -87,7 +86,7 @@ const SkillsSection = () => {
           ))}
         </div>
       </div>
-      {[...Array(200)].map((_, i) => (
+      {[...Array(80)].map((_, i) => (
         <div
           key={i}
           className="particle absolute rounded-full"

@@ -12,9 +12,10 @@ const pricingPlans = [
       'Only Frontend Development',
       'Hosting not included',
       'Maintenance not included',
+      'Testing Included'
     ],
     buttonText: 'Get Started Now',
-    buttonLink: '#',
+    buttonLink: '/projectform',
     gradient: 'from-purple-400 via-pink-500 to-red-500',
   },
   {
@@ -28,7 +29,7 @@ const pricingPlans = [
       'Limited Maintenance with extra charges',
     ],
     buttonText: 'Get Started Now',
-    buttonLink: '#',
+    buttonLink: '/projectform',
     gradient: 'from-blue-400 via-teal-500 to-green-500',
   },
   {
@@ -42,7 +43,7 @@ const pricingPlans = [
       'Free Maintenance for 1st year',
     ],
     buttonText: 'Get Started Now',
-    buttonLink: '#',
+    buttonLink: '/projectform',
     gradient: 'from-yellow-400 via-orange-500 to-red-500',
   },
 ];
@@ -60,7 +61,7 @@ const cardVariants = {
 const PricingPage = () => {
   return (
     <section className="bg-black py-20" id='pricing'>
-        {[...Array(100)].map((_, i) => (
+        {[...Array(80)].map((_, i) => (
         <div
           key={i}
           className="particle absolute rounded-full"

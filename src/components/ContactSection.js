@@ -17,7 +17,7 @@ const ContactSection = () => {
 
   return (
     <section className="relative  py-20 text-white"  style={{backgroundColor:'black'}}>
-       {[...Array(100)].map((_, i) => (
+       {[...Array(80)].map((_, i) => (
         <div
           key={i}
           className="particle absolute rounded-full"

@@ -1,25 +1,37 @@
-
 import React, { useEffect } from 'react';
 import { motion, useAnimation } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';  
-const testimonials = [
+import { useInView } from 'react-intersection-observer';
+
+const workProcess = [
   {
-    name: 'John Doe',
-    position: 'CEO, Tech Company',
-    feedback: 'A highly skilled and dedicated developer. Delivered our project on time with exceptional quality.',
-    photo: '/snap.jpg',
+    step: 1,
+    title: 'Discovery',
+    description: 'Understanding your needs and project requirements in depth.',
+    icon: '🔍', // You can replace this with an actual icon component or image
   },
   {
-    name: 'Jane Smith',
-    position: 'CTO, Startup Inc.',
-    feedback: 'An excellent collaborator and problem-solver. Always goes above and beyond to ensure success.',
-    photo: '/snap.jpg',
+    step: 2,
+    title: 'Planning',
+    description: 'Crafting a detailed roadmap and timeline for your project.',
+    icon: '📝',
   },
   {
-    name: 'Mike Johnson',
-    position: 'Project Manager, Web Solutions',
-    feedback: 'A true professional with a keen eye for detail. Great to work with and highly recommended.',
-    photo: '/snap.jpg',
+    step: 3,
+    title: 'Development',
+    description: 'Bringing your vision to life with clean, efficient code.',
+    icon: '💻',
+  },
+  {
+    step: 4,
+    title: 'Testing',
+    description: 'Rigorous quality assurance to ensure a flawless product.',
+    icon: '🧪',
+  },
+  {
+    step: 5,
+    title: 'Delivery',
+    description: 'Launching your project and providing ongoing support.',
+    icon: '🚀',
   },
 ];
 
@@ -28,7 +40,7 @@ const fadeInVariants = {
   visible: { opacity: 1, y: 0 },
 };
 
-const TestimonialsSection = () => {
+const WorkProcessSection = () => {
   const controls = useAnimation();
   const [ref, inView] = useInView({
     triggerOnce: true,
@@ -44,7 +56,7 @@ const TestimonialsSection = () => {
   return (
     <section className="bg-black py-20 relative">
       {/* Stars background */}
-      {[...Array(200)].map((_, i) => (
+      {[...Array(80)].map((_, i) => (
         <div
           key={i}
           className="star absolute rounded-full"
@@ -68,29 +80,22 @@ const TestimonialsSection = () => {
           transition={{ duration: 1 }}
           className="text-4xl font-bold mb-12 text-white"
         >
-          <span style={{ fontFamily: '"Style Script", cursive', fontSize:'60px'}}>Testimonials</span>
+          <span style={{ fontFamily: '"Style Script", cursive', fontSize:'60px'}}>My Work Process</span>
         </motion.h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-          {testimonials.map((testimonial, index) => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
+          {workProcess.map((step, index) => (
             <motion.div
-              key={testimonial.name}
+              key={step.title}
               initial="hidden"
               animate={controls}
               variants={fadeInVariants}
               transition={{ duration: 1, delay: index * 0.2 }}
               className="p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 bg-gray-800"
             >
-              <div className="flex items-center justify-center mb-4">
-                <img
-                  src={testimonial.photo}
-                  alt={testimonial.name}
-                  className="w-20 h-20 rounded-full object-cover shadow-lg"
-                  style={{ boxShadow: '0 20px 50px rgba(255, 255, 255, 0.3)' }}
-                />
-              </div>
-              <h3 className="text-xl font-bold text-gray-200 mb-2">{testimonial.name}</h3>
-              <p className="text-sm text-gray-400">{testimonial.position}</p>
-              <p className="text-gray-300 mt-4">&quot;{testimonial.feedback}&quot;</p>
+              <div className="text-4xl mb-4">{step.icon}</div>
+              <h3 className="text-xl font-bold text-gray-200 mb-2">{step.title}</h3>
+              <p className="text-sm text-gray-400">Step {step.step}</p>
+              <p className="text-gray-300 mt-4">{step.description}</p>
             </motion.div>
           ))}
         </div>
@@ -99,4 +104,4 @@ const TestimonialsSection = () => {
   );
 };
 
-export default TestimonialsSection;
+export default WorkProcessSection;

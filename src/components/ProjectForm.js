@@ -27,7 +27,7 @@ const CosmicProjectForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setProcessing(true);
-    const response=await fetch ('http://localhost:5000/api/auth/sendmessage',{
+    const response=await fetch ('https://portbackend-ipyo.onrender.com/api/auth/sendmessage',{
       method:'POST',
       headers:{
         "Content-Type":"application/json"
@@ -52,7 +52,7 @@ navigate("/")
   return (
     <div className="min-h-screen bg-black overflow-hidden relative flex items-center justify-center px-4 py-12">
       {/* Starry background */}
-      {[...Array(200)].map((_, i) => (
+      {[...Array(80)].map((_, i) => (
         <div
           key={i}
           className="star absolute rounded-full bg-white"
