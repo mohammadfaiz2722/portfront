@@ -10,11 +10,16 @@ import ContactSection from './components/ContactSection';
 import PricingPage from './components/Pricing';
 import SkillShowcase from './components/SkillShowcase'
 import ProjectForm from './components/ProjectForm'
+import { Helmet } from 'react-helmet';
+
 function App() {
   return (
   <>
   <Router>
       <Navbar/>
+      <Helmet>
+        <title>FaizNova</title>
+      </Helmet>
       
       <Routes>
          <Route path="/" element={<>
