@@ -5,6 +5,7 @@
        url('./ThisCafe.otf') format('otf');
 }
 
+<<<<<<< HEAD
 .nav {
   display: flex;
   justify-content: space-between;
@@ -166,3 +167,12 @@ ul li {
     margin-left: -10px;
   }
 }
+=======
+    font-size: 1.3rem;
+    margin-left: -10px;
+  }
+  .hamburger{
+    margin-top: 15px;
+  }
+}  
+>>>>>>> e1e6ab95874fe9d9931fd214cd7af74e278d68f6
