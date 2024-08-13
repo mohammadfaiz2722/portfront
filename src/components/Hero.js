@@ -1,9 +1,9 @@
 // 'use client';
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Link as ScrollLink, animateScroll as scroll } from 'react-scroll';
+import { Link as ScrollLink } from 'react-scroll';
 import { Typewriter } from 'react-simple-typewriter';
-import { FaStar } from 'react-icons/fa';
+// import { FaStar } from 'react-icons/fa';
 import './Hero.css';
 const TypewriterText = ({ text }) => {
   const [displayText, setDisplayText] = useState('');
@@ -62,24 +62,12 @@ const SplashScreen = ({ onEnd }) => {
 
 const Hero = () => {
   const [showSplash, setShowSplash] = useState(true);
-<<<<<<< HEAD
   // const [menuOpen, setMenuOpen] = useState(false);
 
 
   return (
     <div className="relative" id='hero'>
     {[...Array(80)].map((_, i) => (
-=======
-  const [menuOpen, setMenuOpen] = useState(false);
-
-  const toggleMenu = () => {
-    setMenuOpen(!menuOpen);
-  };
-
-  return (
-    <div className="relative" id='hero'>
-         {[...Array(200)].map((_, i) => (
->>>>>>> e1e6ab95874fe9d9931fd214cd7af74e278d68f6
         <div
           key={i}
           className="particle absolute rounded-full"
@@ -117,19 +105,11 @@ const Hero = () => {
             </span><span className='hide'> specializing in MERN stack and Next.js. </span>
           </p>
           
-<<<<<<< HEAD
           <button className="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-white rounded-full group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 transition duration-300 ease-in-out">
   <ScrollLink to="projects" smooth={true} duration={500} className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-black rounded-full group-hover:bg-opacity-0">
     View My Work
   </ScrollLink>
 </button>
-=======
-          <button className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full transition duration-300">
-          <ScrollLink to="projects" smooth={true} duration={500}>
-             View My Work
-          </ScrollLink>
-          </button>
->>>>>>> e1e6ab95874fe9d9931fd214cd7af74e278d68f6
         </div>
       </section>
     </div>
