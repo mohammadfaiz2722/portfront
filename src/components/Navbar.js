@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Link as ScrollLink } from 'react-scroll';
 import './Navbar.css';
 
-const resume = '/faizreal.pdf';
+const resume = '/FaizJOb.pdf';
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
