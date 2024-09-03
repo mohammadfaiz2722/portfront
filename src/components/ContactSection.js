@@ -30,7 +30,7 @@ const ContactSection = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
   return (
-    <section className="relative  py-20 text-white"  style={{backgroundColor:'black'}}>
+    <section className="relative  py-20 text-white"  style={{backgroundColor:'black', overflow:'hidden'}}>
       
       <div className="relative container mx-auto px-6 text-center">
         <motion.h2
